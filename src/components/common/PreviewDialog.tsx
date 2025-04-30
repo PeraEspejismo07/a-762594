@@ -36,14 +36,14 @@ const PreviewDialog: React.FC<PreviewDialogProps> = ({
         <DialogHeader>
           <DialogTitle>{title || `Aperçu - ${moduleName}`}</DialogTitle>
           <DialogDescription>
-            Aperçu avant impression
+            Aperçu antes de imprimir
           </DialogDescription>
         </DialogHeader>
         <div className="flex-grow overflow-auto border rounded-md mt-4 bg-white">
           <iframe
             srcDoc={`
               <!DOCTYPE html>
-              <html lang="${settings.locale || 'fr'}">
+              <html lang="${settings.locale}">
                 <head>
                   <meta charset="UTF-8">
                   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -164,11 +164,11 @@ const PreviewDialog: React.FC<PreviewDialogProps> = ({
             variant="outline" 
             onClick={() => onOpenChange(false)}
           >
-            Fermer
+            Cerrar
           </Button>
           <Button onClick={onPrint}>
             <Printer className="mr-2 h-4 w-4" aria-hidden="true" />
-            Imprimer
+            Imprimir
           </Button>
         </div>
       </DialogContent>

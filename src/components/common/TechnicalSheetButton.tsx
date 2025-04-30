@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { FileText, Loader2, Download, Eye, Printer } from 'lucide-react';
@@ -428,11 +427,11 @@ const TechnicalSheetButton: React.FC<TechnicalSheetButtonProps> = ({
           </div>
           <div className="flex justify-end gap-2 mt-4">
             <Button variant="outline" onClick={() => setPreviewOpen(false)}>
-              Fermer
+              Cerrar
             </Button>
             <Button onClick={handlePrint}>
               <Printer className="mr-2 h-4 w-4" />
-              Imprimer
+              Imprimir
             </Button>
           </div>
         </DialogContent>

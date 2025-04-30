@@ -1,6 +1,4 @@
 
-import { useAppSettings } from '@/contexts/AppSettingsContext';
-
 /**
  * Generate HTML content for preview based on data and columns
  */
@@ -73,7 +71,7 @@ export const generatePreviewHTML = (
         </table>
       </div>
       <div class="mt-6 text-sm text-gray-500 dark:text-gray-400 text-right">
-        <p>Date: ${new Date().toLocaleDateString(locale || 'fr-FR')}</p>
+        <p>Date: ${new Date().toLocaleDateString(locale || 'es-ES')}</p>
       </div>
       ${navigationButtons}
     </div>
