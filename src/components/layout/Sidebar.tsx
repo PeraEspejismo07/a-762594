@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
   Menu as MenuIcon,
@@ -84,7 +84,7 @@ export function Sidebar() {
               "mb-1 rounded-md px-3 py-1.5 text-xs font-medium text-muted-foreground",
               sidebarCollapsed && "flex justify-center px-0"
             )}>
-              {!sidebarCollapsed && "MENU"}
+              {!sidebarCollapsed && "MENÚ"}
               {sidebarCollapsed && <MenuIcon className="h-4 w-4" />}
             </div>
             <div className="grid gap-1">
@@ -119,26 +119,26 @@ export function Sidebar() {
               "mb-1 rounded-md px-3 py-1.5 text-xs font-medium text-muted-foreground",
               sidebarCollapsed && "flex justify-center px-0"
             )}>
-              {!sidebarCollapsed && "SUPPORT"}
+              {!sidebarCollapsed && "SOPORTE"}
               {sidebarCollapsed && <HelpCircle className="h-4 w-4" />}
             </div>
             <div className="grid gap-1">
               <NavItem
                 href="/help"
                 icon={<HelpCircle className="h-4 w-4" />}
-                title="Helps"
+                title="Ayuda"
                 collapsed={sidebarCollapsed}
               />
               <NavItem
                 href="/integration"
                 icon={<Calendar className="h-4 w-4" />}
-                title="Integration"
+                title="Integración"
                 collapsed={sidebarCollapsed}
               />
               <NavItem
                 href="/settings"
                 icon={<Settings className="h-4 w-4" />}
-                title="Settings"
+                title="Configuración"
                 collapsed={sidebarCollapsed}
               />
             </div>

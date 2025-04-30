@@ -9,6 +9,8 @@ const VentaProyectadaPage = () => {
       <PageHeader
         title="Venta proyectada"
         description="Análisis y proyecciones de ventas"
+        onTitleChange={() => {}}
+        onDescriptionChange={() => {}}
       />
       <div className="p-6">
         <div className="rounded-lg border border-border bg-card p-6 shadow-sm">

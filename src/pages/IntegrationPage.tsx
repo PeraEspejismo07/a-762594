@@ -9,6 +9,8 @@ const IntegrationPage = () => {
       <PageHeader
         title="Integration"
         description="Gestione las integraciones con otros sistemas"
+        onTitleChange={() => {}}
+        onDescriptionChange={() => {}}
       />
       <div className="p-6">
         <div className="rounded-lg border border-border bg-card p-6 shadow-sm">

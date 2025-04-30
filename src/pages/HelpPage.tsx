@@ -9,6 +9,8 @@ const HelpPage = () => {
       <PageHeader
         title="Helps"
         description="Centro de ayuda y soporte"
+        onTitleChange={() => {}}
+        onDescriptionChange={() => {}}
       />
       <div className="p-6">
         <div className="rounded-lg border border-border bg-card p-6 shadow-sm">

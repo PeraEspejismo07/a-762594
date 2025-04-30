@@ -9,6 +9,8 @@ const SettingsPage = () => {
       <PageHeader
         title="Settings"
         description="Configure las preferencias de la aplicación"
+        onTitleChange={() => {}}
+        onDescriptionChange={() => {}}
       />
       <div className="p-6">
         <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
