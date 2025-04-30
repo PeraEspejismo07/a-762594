@@ -1,70 +1,45 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-interface AppSettings {
-  darkMode: boolean;
-  locale: string;
-  // Add other settings here
-}
+import React, { createContext, useContext, useState, useMemo, useCallback, useEffect } from 'react';
 
-interface AppSettingsContextType {
-  settings: AppSettings;
-  updateSetting: (key: string, value: any) => void;
-  updateNestedSetting: (section: string, key: string, value: any) => void;
-}
-
-const defaultSettings: AppSettings = {
-  darkMode: false,
-  locale: 'fr-FR',
-  // Default values for other settings
+type AppSettingsContextType = {
+  sidebarCollapsed: boolean;
+  toggleSidebarCollapsed: () => void;
 };
 
-const AppSettingsContext = createContext<AppSettingsContextType>({
-  settings: defaultSettings,
-  updateSetting: () => {},
-  updateNestedSetting: () => {},
-});
+const AppSettingsContext = createContext<AppSettingsContextType | undefined>(undefined);
 
-export const useAppSettings = () => useContext(AppSettingsContext);
+export const AppSettingsProvider = ({ children }: { children: React.ReactNode }) => {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(
+    localStorage.getItem('sidebarCollapsed') === 'true'
+  );
 
-interface AppSettingsProviderProps {
-  children: ReactNode;
-}
-
-export const AppSettingsProvider: React.FC<AppSettingsProviderProps> = ({ children }) => {
-  const [settings, setSettings] = useState<AppSettings>(defaultSettings);
-
-  const updateSetting = (key: string, value: any) => {
-    setSettings(prevSettings => ({
-      ...prevSettings,
-      [key]: value,
-    }));
-  };
-
-  // Fix the updateNestedSetting function with proper typing
-  const updateNestedSetting = (section: string, key: string, value: any) => {
-    setSettings((prevSettings) => {
-      // Create a copy of the current settings
-      const updatedSettings = { ...prevSettings };
-      
-      // Safely handle the nested section
-      const sectionData = updatedSettings[section] as Record<string, any>;
-      
-      // If the section exists, update it
-      if (sectionData) {
-        // Create a new object for the section to avoid direct mutation
-        updatedSettings[section] = {
-          ...sectionData,
-          [key]: value
-        };
-      }
-      
-      return updatedSettings;
+  const toggleSidebarCollapsed = useCallback(() => {
+    setSidebarCollapsed((prev) => {
+      const newValue = !prev;
+      localStorage.setItem('sidebarCollapsed', String(newValue));
+      return newValue;
     });
-  };
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      sidebarCollapsed,
+      toggleSidebarCollapsed,
+    }),
+    [sidebarCollapsed, toggleSidebarCollapsed]
+  );
 
   return (
-    <AppSettingsContext.Provider value={{ settings, updateSetting, updateNestedSetting }}>
+    <AppSettingsContext.Provider value={value}>
       {children}
     </AppSettingsContext.Provider>
   );
+};
+
+export const useAppSettings = (): AppSettingsContextType => {
+  const context = useContext(AppSettingsContext);
+  if (context === undefined) {
+    throw new Error('useAppSettings must be used within an AppSettingsProvider');
+  }
+  return context;
 };

@@ -1,36 +1,18 @@
 
-import React, { useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
-import { Frown, ArrowLeft } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center max-w-lg mx-auto p-8">
-        <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center mx-auto mb-6">
-          <Frown className="h-10 w-10 text-muted-foreground" />
-        </div>
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-muted-foreground mb-6">
-          La page que vous recherchez n'existe pas ou a été déplacée.
-        </p>
-        <Link 
-          to="/" 
-          className="inline-flex items-center px-4 py-2 bg-agri-primary text-white rounded-lg hover:bg-agri-primary-dark transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Retour à l'accueil
-        </Link>
-      </div>
+    <div className="flex flex-col items-center justify-center h-screen p-6 text-center">
+      <h1 className="text-7xl font-bold text-agri-primary">404</h1>
+      <h2 className="text-2xl font-semibold mt-4 mb-2">Página no encontrada</h2>
+      <p className="text-muted-foreground mb-6 max-w-md">
+        Lo sentimos, la página que estás buscando no existe o ha sido movida.
+      </p>
+      <Button asChild>
+        <Link to="/">Volver al Dashboard</Link>
+      </Button>
     </div>
   );
 };

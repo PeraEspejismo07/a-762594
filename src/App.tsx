@@ -16,6 +16,14 @@ import { StatisticsProvider } from "./contexts/StatisticsContext";
 import { AppSettingsProvider } from "./contexts/AppSettingsContext";
 import { trackPageView } from "./utils/analytics";
 
+// Nuevas páginas
+import CoberturaPage from "./pages/CoberturaPage";
+import VentaProyectadaPage from "./pages/VentaProyectadaPage";
+import NotificacionesPage from "./pages/NotificacionesPage";
+import HelpPage from "./pages/HelpPage";
+import IntegrationPage from "./pages/IntegrationPage";
+import SettingsPage from "./pages/SettingsPage";
+
 // Define routes configuration with redirects
 const routes = [
   { path: "/", element: <Index /> },
@@ -26,8 +34,15 @@ const routes = [
   { path: "/finances", element: <FinancePage /> },
   { path: "/statistiques", element: <StatisticsProvider><StatsPage /></StatisticsProvider> },
   { path: "/rapports", element: <Navigate to="/statistiques" replace /> },
-  { path: "/parametres", element: <Navigate to="/" replace /> },
+  { path: "/parametres", element: <Navigate to="/settings" replace /> },
   { path: "/dashboard", element: <Navigate to="/" replace /> },
+  // Nuevas rutas
+  { path: "/cobertura", element: <CoberturaPage /> },
+  { path: "/venta-proyectada", element: <VentaProyectadaPage /> },
+  { path: "/notificaciones", element: <NotificacionesPage /> },
+  { path: "/help", element: <HelpPage /> },
+  { path: "/integration", element: <IntegrationPage /> },
+  { path: "/settings", element: <SettingsPage /> },
   { path: "*", element: <NotFound /> }
 ];
 
